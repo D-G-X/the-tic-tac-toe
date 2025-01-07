@@ -3,8 +3,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div>Tic-Tac-Toe</div>
-      <div>by dgx</div>
+      <header className="App-header">
+        <p className="border border-white">Tic Tac Toe</p>
+      </header>
     </div>
   );
 }
