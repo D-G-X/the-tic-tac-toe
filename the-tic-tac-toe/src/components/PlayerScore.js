@@ -15,9 +15,6 @@ function PlayerScore(props) {
           </div>
         </div>
       </div>
-      <div className="text-center text-3xl my-3">
-        <div>{props.gameMessage}</div>
-      </div>
     </>
   );
 }
