@@ -4,6 +4,7 @@ import "../assets/GameBoard.css";
 function GameBoard() {
   const WIDTH = 3;
   const HEIGHT = 3;
+  const ROUND_END_BOARD_RESET_TIMER = 3000;
   const WINNING_COMBINATIONS = [
     ["00", "01", "02"],
     ["10", "11", "12"],
@@ -48,7 +49,7 @@ function GameBoard() {
         setRoundOver(true);
         setTimeout(() => {
           resetGameBoard();
-        }, 3000);
+        }, ROUND_END_BOARD_RESET_TIMER);
       } else if (
         playerOneTiles.size + 1 + playerTwoTiles.size ===
         WIDTH * HEIGHT
@@ -56,7 +57,7 @@ function GameBoard() {
         setGameMessage("Draw");
         setTimeout(() => {
           resetGameBoard();
-        }, 3000);
+        }, ROUND_END_BOARD_RESET_TIMER);
         setRoundOver(true);
       } else {
         setGameMessage(`Player ${playerTurn === 1 ? 2 : 1} Turn`);
@@ -74,11 +75,13 @@ function GameBoard() {
   };
 
   const resetGameBoard = () => {
-    setPlayerOneTiles(new Set());
-    setPlayerTwoTiles(new Set());
-    setPlayerTurn(playerTurn === 1 ? 2 : 1);
-    setGameMessage(`Player ${playerTurn === 1 ? 2 : 1} Turn`);
-    setRoundOver(false);
+    if (roundOver) {
+      setPlayerOneTiles(new Set());
+      setPlayerTwoTiles(new Set());
+      setPlayerTurn(playerTurn === 1 ? 2 : 1);
+      setGameMessage(`Player ${playerTurn === 1 ? 2 : 1} Turn`);
+      setRoundOver(false);
+    }
   };
 
   return (
