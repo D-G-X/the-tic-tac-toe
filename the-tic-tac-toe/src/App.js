@@ -10,10 +10,6 @@ function App() {
   return (
     <div className="App bg-slate-950 min-h-full text-white">
       <GameTitleHeader />
-      <PlayerScore
-        playerOneScore={playerOneScore}
-        playerTwoScore={playerTwoScore}
-      />
       <GameBoard />
     </div>
   );
